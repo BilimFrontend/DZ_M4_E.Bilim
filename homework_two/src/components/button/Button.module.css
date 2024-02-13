@@ -1,0 +1,14 @@
+.btn{
+    width: 100px;
+    font-family: sans-serif;
+    padding: 8px 0;
+    border-radius: 6px;
+    border: 2px solid black;
+    background: none;
+    transition: 300ms ease-in-out;
+}
+
+.btn:hover{
+    color: white;
+    background: black;
+}
