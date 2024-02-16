@@ -1,9 +1,7 @@
 import React from 'react';
 import classes from "./Modal.module.css";
-import Button from "../button/Button";
-import Input from "../input/Input";
 
-const Modal = ({children, handleShow}) => {
+const Modal = ({children}) => {
     return (
         <>
             <div className={classes.modalWrapper}>
@@ -11,8 +9,6 @@ const Modal = ({children, handleShow}) => {
             </div>
 
             <div className={classes.modalContent}>
-                <Button handle={handleShow} text={"Close"}/>
-                <Input type={"text"} onchange={""}/>
                 {children}
             </div>
         </>

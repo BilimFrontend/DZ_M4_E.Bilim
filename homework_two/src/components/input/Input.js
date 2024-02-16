@@ -1,9 +1,12 @@
 import React from 'react';
 import classes from "./Input.module.css";
 
-const Input = ({type, onchange}) => {
+const Input = ({type,placeholder,onChangeInput}) => {
     return (
-        <input className={classes.input} type="text"/>
+        <input className={classes.input}
+               type={type}
+               placeholder={placeholder}
+               onChange={onChangeInput}/>
     );
 };
 

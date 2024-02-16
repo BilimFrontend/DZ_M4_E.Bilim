@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from "./List.module.css";
+import Task from "../task/Task";
 
-const List = ({list}) => {
+const List = ({titles,handleDelete}) => {
     return (
-        <div className={classes.list}>
-            <p>{list.id} {list.title}</p>
+        <div>
+            {titles.map(title => <Task key={title.id} task={title} handleDelete={() => handleDelete(title.id)}/>)}
         </div>
     );
 };

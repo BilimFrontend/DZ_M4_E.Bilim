@@ -1,0 +1,30 @@
+:root{
+    --bg-color: #3c7c7e;
+}
+
+.list{
+    width: 740px;
+    height: 130px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px auto;
+    color: white;
+    border-radius: 6px;
+    background: var(--bg-color);
+    transition: 200ms ease-in-out;
+    border: 2px solid var(--bg-color);
+}
+
+.list:hover{
+    background: none;
+    border: 2px solid var(--bg-color);
+    color: black;
+}
+
+.list p{
+    padding-left: 20px;
+    font-size: 16px;
+}
