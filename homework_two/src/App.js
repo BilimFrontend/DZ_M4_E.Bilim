@@ -1,6 +1,6 @@
 import './App.css';
 import Modal from "./components/modal/Modal";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "./components/button/Button";
 import List from "./components/list/List";
 import Input from "./components/input/Input";
@@ -25,7 +25,21 @@ function App() {
           completed: false,
       }
       ])
+    console.table(titles)
 
+    const handleDone = (id) => {
+        titles.map(title => {
+            if (title.id===id) {
+                return title.completed = !title.completed
+            }else{
+                return titles
+            }
+        })
+        setTitles([...titles])
+    }
+
+    const [searchInput, setSearchInput] = useState('')
+    const [originalTitles, setOriginalTitles] = useState(titles)
     const handleShow = () => {
       setShow(!show)
       return console.log(show)
@@ -47,7 +61,7 @@ function App() {
   }
 
   const handleDelete = (id) => {
-      const deletedObj = titles.filter(task => task.id!==id)
+      const deletedObj = titles.filter(title => title.id!==id)
       setTitles(deletedObj)
   }
 
@@ -55,6 +69,33 @@ function App() {
   //const b = [4,5,6]
   //const c = [...a,...b] <- spread(...) оператор объединил два массива в один.
   //console.log(c) <- будет [1,2,3,4,5,6]
+
+  const handleSearch = (event) => {
+      const inputValue = event.target.value
+      setSearchInput(inputValue)
+      if (inputValue===""){
+          setTitles(originalTitles)
+      }else{
+          const filterTitles = titles.filter(title => title.title.toLowerCase().includes(inputValue.toLowerCase()))
+          setTitles(filterTitles)
+      }
+  }
+
+  const handeEdit = (editTodo) => {
+      titles.map(title => {
+          if (title.id === editTodo.id){
+              return title.title = editTodo.title
+          }
+      })
+      setTitles(titles)
+  }
+
+
+
+    useEffect(() => { // <- Сделать что-то после рендера(вызывается каждый раз)
+        console.log('useEffect')
+    }, [show]); // [] - зависимость <- срабатывать каждый при срабатывании show (без него он будет срабатывать каждый раз)
+
 
   return (
       <>
@@ -67,7 +108,11 @@ function App() {
           }
 
           <Button text={"Open"} onClick={handleShow}/>
-          <List titles={titles} handleDelete={handleDelete}/>
+          <Input placeholder={"Искать"} onChangeInput={handleSearch}/>
+          <List titles={titles}
+                handleDelete={handleDelete}
+                handleDone={handleDone}
+                handleEdit={handeEdit}/>
       </>
   );
 }
