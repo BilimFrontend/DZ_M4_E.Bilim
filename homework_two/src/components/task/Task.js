@@ -9,7 +9,7 @@ const Task = ({task, handleDelete, handleDone, handleEdit, handleCurrentEdit, is
                 onChange={event => setInput(event.target.value)}
                 value={input}
                 type={"text"}/>
-            <Button
+            <Button color={"#64cc64"}
                 onClick={
                     () => {
                         handleEdit({
@@ -22,7 +22,7 @@ const Task = ({task, handleDelete, handleDone, handleEdit, handleCurrentEdit, is
                 text={"Сохранить"}
 
             />
-            <Button
+            <Button color={"#de5f5f"}
                 onClick={
                     () => {
                         handleCurrentEdit("")

@@ -58,6 +58,7 @@ function App() {
               }
           ]
       )
+      setShow(!show)
   }
 
   const handleDelete = (id) => {
@@ -102,8 +103,8 @@ function App() {
           {
               show && <Modal handleShow={handleShow}>
                   <Input type={"text"} placeholder={"Введите текст"} onChangeInput={onChangeInput}/>
-                  <Button onClick={handleAdd} text={"Добавить"}/>
-                  <Button onClick={handleShow} text={"Закрыть"}/>
+                  <Button color={"#64cc64"} onClick={handleAdd} text={"Добавить"}/>
+                  <Button color={"#de5f5f"} onClick={handleShow} text={"Закрыть"}/>
               </Modal>
           }
 
