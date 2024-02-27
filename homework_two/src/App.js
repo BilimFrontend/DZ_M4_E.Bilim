@@ -4,27 +4,15 @@ import React, {useEffect, useState} from "react";
 import Button from "./components/button/Button";
 import List from "./components/list/List";
 import Input from "./components/input/Input";
+import userEvent from "@testing-library/user-event";
+import task from "./components/task/Task";
+import Users from "./page/users/Users";
+import SelectOption from "./components/selectOption/SelectOption";
 
 function App() {
   const [show, setShow] =  useState(false)
   const [input, setInput] = useState("")
-  const [titles, setTitles] = useState([
-      {
-          id:1 ,
-          title: 'coding',
-          completed: false,
-      },
-      {
-          id:2,
-          title: 'eat',
-          completed: false,
-      },
-      {
-          id:3,
-          title: 'sleep',
-          completed: false,
-      }
-      ])
+  const [titles, setTitles] = useState([])
     console.table(titles)
 
     const handleDone = (id) => {
@@ -52,7 +40,7 @@ function App() {
   const handleAdd = () => {
       setTitles(prev=>[...prev, //<- prevState - предыдущее(прошлое) состояние
               {
-                  id: titles.length + 1,
+                  id: titles.length === 0 ? 1 : titles[titles.length-1].id + 1,
                   title: input,
                   completed: false
               }
@@ -94,9 +82,62 @@ function App() {
 
 
     useEffect(() => { // <- Сделать что-то после рендера(вызывается каждый раз)
-        console.log('useEffect')
-    }, [show]); // [] - зависимость <- срабатывать каждый при срабатывании show (без него он будет срабатывать каждый раз)
+        console.log('useEffect1')
+    }, [show]); // [] - зависимость <- срабатывать каждый раз при срабатывании show (без него он будет срабатывать каждый раз)
 
+
+    useEffect(() => {
+        localStorage.setItem('user', 'Bbb') // <- Добавление // user - это ключ
+        localStorage.setItem('age', 1234)
+        console.log(localStorage.getItem("user"), "user") // <- Получение по ключу
+        localStorage.removeItem("user") // <- Удаление по ключу
+    }, []);
+
+
+    useEffect(() => {
+        const myLocalList = JSON.parse(localStorage.getItem('titles'))
+        if (myLocalList === null){
+            return localStorage.setItem('titles', JSON.stringify(titles))
+        }
+        if (myLocalList.length !== 0){
+            setTitles(myLocalList)
+        }
+    }, []);
+
+
+    useEffect(() => {
+        localStorage.setItem('titles', JSON.stringify(titles))
+    },[titles])
+
+
+    const [users, setUsers] = useState([])
+
+
+    const getUsers = async () => {
+        const response = await fetch('https://jsonplaceholder.org/users')
+        const data = await (response.json())
+        setUsers(data)
+    }
+
+    const removeAll = () => {
+        localStorage.removeItem('titles')
+        setTitles([])
+    }
+
+    const [filterOption, setFilterOption] = useState('all')
+    const option = ['completed', "notCompleted", "all"]
+    const handleFilterOption = (event) => {
+        setFilterOption(event.target.value)
+    }
+
+    const filterTitles = titles.filter(title => {
+        switch (filterOption) {
+            case "completed": return title.completed
+            case "notCompleted": return !title.completed
+            default:
+                return true
+        }
+    })
 
   return (
       <>
@@ -108,14 +149,23 @@ function App() {
               </Modal>
           }
 
-          <Button text={"Open"} onClick={handleShow}/>
-          <Input placeholder={"Искать"} onChangeInput={handleSearch}/>
-          <List titles={titles}
+          <div className={"box"}>
+              <SelectOption option={option} onChange={handleFilterOption} selectValue={filterOption}/>
+              <Button text={"Открыть"} onClick={handleShow}/>
+              <Button text={"Получить"} onClick={getUsers}/>
+              <Button text={"Очистить"} onClick={removeAll}/>
+              <Input placeholder={"Искать"} onChangeInput={handleSearch}/>
+          </div>
+          <List titles={filterTitles}
                 handleDelete={handleDelete}
                 handleDone={handleDone}
                 handleEdit={handeEdit}/>
+          <Users users={users}/>
       </>
   );
 }
 
 export default App;
+
+
+//LocalStorage - сохраняет данные пока мы не удалим
