@@ -3,6 +3,7 @@
 }
 
 .btn{
+    cursor: pointer;
     width: 100px;
     font-family: sans-serif;
     padding: 8px 0;

@@ -16,7 +16,7 @@ const Task = ({task, handleDelete, handleDone, handleEdit, handleCurrentEdit, is
                             ...task,
                             title: input
                         })
-                        handleCurrentEdit("")
+                        handleCurrentEdit(null)
                     }
                 }
                 text={"Сохранить"}
@@ -25,7 +25,7 @@ const Task = ({task, handleDelete, handleDone, handleEdit, handleCurrentEdit, is
             <Button color={"#de5f5f"}
                 onClick={
                     () => {
-                        handleCurrentEdit("")
+                        handleCurrentEdit(null)
                     }
                 }
                 text={"Отмена"}/>

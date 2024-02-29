@@ -5,3 +5,10 @@
     scroll-behavior: smooth;
     font-family: sans-serif;
 }
+
+.box{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+}

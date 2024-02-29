@@ -1,0 +1,24 @@
+.select{
+    cursor: pointer;
+    width: 250px;
+    padding: 10px 0;
+    border-radius: 6px;
+    text-transform: uppercase;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.select:hover{
+    color: #3c7c7e;
+    border: 2px solid #3c7c7e;
+}
+
+.option{
+    font-size: 16px;
+    text-align: start;
+}
+
+.option:checked{
+    background: black;
+    color: white;
+}
