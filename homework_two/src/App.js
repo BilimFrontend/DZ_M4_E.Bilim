@@ -8,6 +8,9 @@ import userEvent from "@testing-library/user-event";
 import task from "./components/task/Task";
 import Users from "./page/users/Users";
 import SelectOption from "./components/selectOption/SelectOption";
+import Pagination from "./components/pagination/Pagination";
+import PokemonPage from "./page/PokemonPage/PokemonPage";
+import PokemonCard from "./components/PokemonCard/PokemonCard";
 
 function App() {
   const [show, setShow] =  useState(false)
@@ -83,7 +86,7 @@ function App() {
 
     useEffect(() => { // <- Сделать что-то после рендера(вызывается каждый раз)
         console.log('useEffect1')
-    }, [show]); // [] - зависимость <- срабатывать каждый раз при срабатывании show (без него он будет срабатывать каждый раз)
+    }, [show]); // [] - зависимость <- срабатывать каждый раз при срабатывании show (без него он будет срабатывать 1 раз)
 
 
     useEffect(() => {
@@ -139,6 +142,37 @@ function App() {
         }
     })
 
+    const BASE_URL = 'https://jsonplaceholder.typicode.com/'
+
+    const getApi = async (endpoint) => {
+        const data = await fetch(BASE_URL+endpoint)
+        const info = await (data.json())
+        setTitles(info)
+    }
+
+    const [offset, setOffset] = useState(0)
+    const [limit, setLimit] = useState(3)
+    console.log(limit)
+    const handleLimitChange = (event) => {
+        setLimit(event.target.value)
+    }
+
+    const handleNext = () => {
+        setOffset(prev => prev+limit)
+    }
+
+    const handlePrev = () => {
+        setOffset(prev => prev-limit)
+    }
+
+
+
+    const page = Math.floor(offset/limit)+1
+
+    useEffect(() => {
+        getApi(`todos?_limit=${limit}&_start=${offset}`)
+    },[offset, limit])
+
   return (
       <>
           {
@@ -155,12 +189,16 @@ function App() {
               <Button text={"Получить"} onClick={getUsers}/>
               <Button text={"Очистить"} onClick={removeAll}/>
               <Input placeholder={"Искать"} onChangeInput={handleSearch}/>
+              <Input type={"number"} value={limit} onChangeInput={handleLimitChange}/>
           </div>
           <List titles={filterTitles}
                 handleDelete={handleDelete}
                 handleDone={handleDone}
-                handleEdit={handeEdit}/>
+                handleEdit={handeEdit}
+          />
+          <Pagination handleNext={handleNext} handlePrev={handlePrev} page={page}/>
           <Users users={users}/>
+          <PokemonPage/>
       </>
   );
 }
