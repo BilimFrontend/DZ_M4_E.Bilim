@@ -7,14 +7,16 @@
 
 
 .pokemon_item{
+    align-items: center;
     width: 350px;
     display: flex;
     flex-direction: column;
-    background: #88ffe6;
+    background: rgba(218, 136, 199, 0.38);
     border-radius: 8px;
-    border: 3px solid #965050;
+    border: 1px solid #ffffff;
     text-align: left;
     color: white;
+    backdrop-filter: blur(4px);
     font-family: sans-serif;
 }
 
@@ -27,9 +29,8 @@
 .pokemon_info{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 17px;
     gap: 10px;
-    background: #ffdca0;
 }
 
 .pokemon_card{
@@ -40,5 +41,5 @@
 
 .pokemon_title{
     font-weight: normal;
-    color: black;
+    color: #ffffff;
 }

@@ -1,6 +1,8 @@
 .pagination_box{
     margin: 0 auto;
     width: 500px;
+    padding-top: 30px;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;

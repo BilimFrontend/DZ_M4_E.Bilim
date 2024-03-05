@@ -172,7 +172,6 @@ function App() {
     useEffect(() => {
         getApi(`todos?_limit=${limit}&_start=${offset}`)
     },[offset, limit])
-
   return (
       <>
           {

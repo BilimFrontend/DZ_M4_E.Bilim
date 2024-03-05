@@ -1,6 +1,6 @@
 .pokemon_card{
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 80px;
     width: 1110px;
     display: flex;
     justify-content: space-between;

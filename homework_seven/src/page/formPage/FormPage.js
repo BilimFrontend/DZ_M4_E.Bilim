@@ -15,17 +15,22 @@ const FormPage = () => {
     console.log(inputValue)
 
     return (
-        <div className={classes.form}>
-            <input
-                name="user"
-                type='text'
-                placeholder="user"
-                onChange={changeInput}/>
-            <input
-                name="age"
-                type='number'
-                placeholder="age"
-                onChange={changeInput}/>
+        <div className={classes.form_bg}>
+            <div className={classes.form}>
+                <p>Form</p>
+                <div className={classes.input_box}>
+                    <input className={classes.input_user}
+                           name="user"
+                           type='text'
+                           placeholder="User"
+                           onChange={changeInput}/>
+                    <input className={classes.input_user}
+                           name="age"
+                           type='number'
+                           placeholder="Age"
+                           onChange={changeInput}/>
+                </div>
+            </div>
         </div>
     );
 };
