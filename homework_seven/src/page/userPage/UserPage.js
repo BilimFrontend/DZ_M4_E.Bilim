@@ -2,23 +2,11 @@ import React, {useEffect, useState} from 'react';
 import Users from "../user/Users";
 import Pagination from "../pagination/Pagination";
 import axios from "axios";
-import PokemonCard from "../../component/pokemonCard/PokemonCard";
-import UsersInfo from "../userInfo/UsersInfo";
-import User from "../user/Users";
-
 const UserPage = () => {
     const [users, setUsers] = useState([])
     const [offset, setOffset] = useState(0)
     const [limit, setLimit] = useState(4)
     console.log(users)
-    // const getPokemons = async () => {
-    //     try {
-    //         const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`); //<- data {} получили сразу data
-    //         return data.results
-    //     }catch (e) {
-    //         console.log(e.message)
-    //     }
-    // }
 
 
     const handleNext = () => {

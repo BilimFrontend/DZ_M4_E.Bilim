@@ -20,7 +20,6 @@ const UsersInfo = () => {
 
     return (
         <div className={classes.user_info}>
-            {/*<h1>Подробная информация о пользователе</h1>*/}
             <div className={classes.users_card}>
                 <p><strong>Street: </strong>{user?.address?.street}</p>
                 <p><strong>Email: </strong>{user.email}</p>

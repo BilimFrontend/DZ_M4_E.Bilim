@@ -1,8 +1,6 @@
-
 import axios from "axios";
 import classes from "./PokemonCard.module.css";
 import React, {useEffect, useState} from "react";
-import Button from "../button/Button";
 import {Link} from "react-router-dom";
 
 const PokemonCard = ({pokemons}) => {

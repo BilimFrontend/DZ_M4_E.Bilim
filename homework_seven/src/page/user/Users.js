@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Button from "../../component/button/Button";
 import classes from "./User.module.css";
 import {Link} from "react-router-dom";
 
@@ -24,14 +23,6 @@ const Users = ({users}) => {
                                 </div>
                                 <div>
                                     <Link className={classes.user_link} to={`/users/${userMapped.id}`}>Подробно</Link>
-                                    {/*<Button onClick={() => getUser(userMapped.id)} text={"Подробнее"}/>*/}
-                                    {/*{user.id === userMapped.id &&*/}
-                                    {/*    <div className={classes.info_user}>*/}
-                                    {/*        <p>Phone: {user?.phone}</p>*/}
-                                    {/*        <p>Website: {user?.website}</p>*/}
-                                    {/*        <p>Email: {user?.email}</p>*/}
-                                    {/*    </div>*/}
-                                    {/*}*/}
                                 </div>
                             </div>
                         </li>)
