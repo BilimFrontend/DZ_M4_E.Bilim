@@ -1,3 +1,23 @@
-.users_card{
+.user_info{
     padding-top: 100px;
+    display: flex;
+    justify-content: center;
 }
+
+
+.users_card{
+    width: 500px;
+
+    display: flex;
+    padding: 20px;
+    border-radius: 6px;
+    gap: 10px;
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid;
+    color: white;
+    font-family: sans-serif;
+}
+
+

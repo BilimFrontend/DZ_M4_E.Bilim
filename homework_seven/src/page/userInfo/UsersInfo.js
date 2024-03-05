@@ -19,10 +19,15 @@ const UsersInfo = () => {
     }, []);
 
     return (
-        <div className={classes.users_card}>
-            <p>{user.firstname}</p>
-            <p>{user?.address?.city}</p>
-            <p>{user.email}</p>
+        <div className={classes.user_info}>
+            {/*<h1>Подробная информация о пользователе</h1>*/}
+            <div className={classes.users_card}>
+                <p><strong>Street: </strong>{user?.address?.street}</p>
+                <p><strong>Email: </strong>{user.email}</p>
+                <p><strong>Phone: </strong>{user.phone}</p>
+                <p><strong>Website: </strong>{user.website}</p>
+                <p><strong>Company: </strong>{user?.company?.name}</p>
+            </div>
         </div>
     );
 };
