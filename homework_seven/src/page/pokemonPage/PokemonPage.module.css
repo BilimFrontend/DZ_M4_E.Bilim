@@ -1,0 +1,9 @@
+.pokemon_card{
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 1110px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}

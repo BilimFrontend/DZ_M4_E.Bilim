@@ -1,0 +1,44 @@
+.pokemon{
+    margin: 0 auto;
+    width: 350px;
+    height: 200px;
+    padding-top: 100px;
+}
+
+
+.pokemon_item{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background: #88ffe6;
+    border-radius: 8px;
+    border: 3px solid #965050;
+    text-align: left;
+    color: white;
+    font-family: sans-serif;
+}
+
+.pokemon_item img{
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+}
+
+.pokemon_info{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    background: #ffdca0;
+}
+
+.pokemon_card{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.pokemon_title{
+    font-weight: normal;
+    color: black;
+}
